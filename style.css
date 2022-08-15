@@ -1,0 +1,109 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    min-height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #a8dadc;
+}
+
+.container {
+    width: fit-content;
+    height: fit-content;
+    border-radius: 50%;
+}
+
+.clock {
+    background-color: #457b9d;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 510px;
+    width: 510px;
+    border-radius: 50%;
+    position: relative;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+.time-line {
+    height: 3px;
+    width: 450px;
+    border-radius: 2px;
+    opacity: 0;
+    z-index: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    right: 0;
+    bottom: 0;
+}
+
+.circle {
+    height: 400px;
+    width: 400px;
+    border-radius: 50%;
+    background-color: #457b9d;
+    z-index: 2;
+}
+
+.seconds, .minutes, .hours {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    right: 0;
+    bottom: 0;
+    transform-origin: bottom;
+    width: 3px;
+    z-index: 3;
+    background-color: #e63946;
+    border-radius: 2px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.seconds {
+    height: 180px;
+    transform: translate(-50%, -100%) rotate(0deg);
+    animation: handAnimate 60s linear infinite;
+}
+
+.minutes {
+    height: 150px;
+    transform: translate(-50%, -100%) rotate(0deg);
+    animation: handAnimate 3600s linear infinite;
+}
+
+.hours {
+    height: 100px;
+    animation: handAnimate 4320s linear infinite;
+}
+
+.middle-point {
+    height: 20px;
+    width: 20px;
+    background-color: #264653;
+    position: absolute;
+    z-index: 4;
+    border-radius: 50%;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+@keyframes handAnimate {
+    100% {
+        transform: translate(-50%, -100%) rotate(360deg);
+    }
+}
+
+@media (max-width: 500px) {
+    .container {
+        transform: scale(.5);
+    }
+}
