@@ -24,7 +24,7 @@ body {
     --smallCircle: hsl(0, 0%, 100%);
     --hourHand: hsl(340, 100%, 53%);
     --minHand: hsl(0, 0%, 100%);
-    --secHand: hsl(0, 0%, 100%);
+    --secHand: #0293db;
     --timeLine: hsl(0, 0%, 100%);
 }
 
@@ -100,11 +100,11 @@ body {
 }
 
 .secHand {
-    height: 150px;
-    width: 2px;
+    height: 180px;
+    width: 3px;
     border-radius: 5px;
     background-color: var(--secHand);
-    z-index: 3;
+    z-index: 5;
     top: 50%;
     left: 50%;
     right: 0;
