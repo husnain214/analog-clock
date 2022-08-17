@@ -16,9 +16,13 @@ function renderTimelines () {
 }
 
 function setTime () {
-    const hours = new Date ().getHours ()
-    const minutes = new Date ().getMinutes ()
-    const seconds = new Date ().getSeconds ()
+    const currentDate = new Date ()
+    
+    const hours = currentDate.getHours ()
+    const minutes = currentDate.getMinutes ()
+    const seconds = currentDate.getSeconds ()
+
+    console.log ({hours, minutes, seconds})
 
     secondsHand.style.transform = `translate(-50%, -96%) rotate(${seconds * 6}deg)`
     minutesHand.style.transform = `translate(-50%, -95%) rotate(${(minutes * 6) + seconds / 10}deg)`
