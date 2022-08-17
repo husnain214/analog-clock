@@ -28,7 +28,7 @@ function setTime () {
 }
 
 function animate () {
-    setTimeout (setTime, 100)
+    setTimeout (setTime, 1000)
 
     requestAnimationFrame(animate)
 }
