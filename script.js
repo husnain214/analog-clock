@@ -20,8 +20,6 @@ function setTime () {
     const minutes = new Date ().getMinutes ()
     const seconds = new Date ().getSeconds ()
 
-    console.log ({hours, minutes, seconds})
-
     secondsHand.style.transform = `translate(-50%, -96%) rotate(${seconds * 6}deg)`
     minutesHand.style.transform = `translate(-50%, -95%) rotate(${(minutes * 6) + seconds / 10}deg)`
     hoursHand.style.transform = `translate(-50%, -95%) rotate(${(hours * 30) + (minutes / 2)}deg)`
