@@ -1,13 +1,7 @@
 const timeLines = document.querySelectorAll (".time-line")
-const hoursHand = document.querySelector (".hours")
-const minutesHand = document.querySelector (".minutes")
-const secondsHand = document.querySelector (".seconds")
-
-const hours = new Date ().getHours ()
-const minutes = new Date ().getMinutes ()
-const seconds = new Date ().getSeconds ()
-
-console.log ({hours, minutes, seconds})
+const hoursHand = document.querySelector (".hourHand")
+const minutesHand = document.querySelector (".minHand")
+const secondsHand = document.querySelector (".secHand")
 
 function renderTimelines () {
     for (let i = 0; i < timeLines.length; i++) {
@@ -15,17 +9,29 @@ function renderTimelines () {
             timeLines[i].style.width = `475px`
         }
 
-        timeLines[i].style.backgroundColor = `#f1faee`
+        timeLines[i].style.backgroundColor = `var(--timeLine)`
         timeLines[i].style.opacity = `1`
         timeLines[i].style.transform = `translate(-50%, -50%) rotate(${i * 30}deg)`
     }
 }
 
 function setTime () {
-    hoursHand.style.transform = `translate(-50%, -100%) rotate(${hours * 30}deg)`
-    minutesHand.style.transform = `translate(-50%, -100%) rotate(${minutes * 6}deg)`
-    secondsHand.style.transform = `translate(-50%, -100%) rotate(${seconds * 6}deg)`
+    const hours = new Date ().getHours ()
+    const minutes = new Date ().getMinutes ()
+    const seconds = new Date ().getSeconds ()
+
+    console.log ({hours, minutes, seconds})
+
+    secondsHand.style.transform = `translate(-50%, -96%) rotate(${seconds * 6}deg)`
+    minutesHand.style.transform = `translate(-50%, -95%) rotate(${(minutes * 6) + seconds / 10}deg)`
+    hoursHand.style.transform = `translate(-50%, -95%) rotate(${(hours * 30) + (minutes / 2)}deg)`
 }
 
-renderTimelines()
-setTime ()
+function animate () {
+    setTimeout (setTime, 100)
+
+    requestAnimationFrame(animate)
+}
+
+renderTimelines ()
+animate()
