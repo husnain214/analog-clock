@@ -29,8 +29,15 @@ function setTime () {
     hoursHand.style.transform = `translate(-50%, -95%) rotate(${(hours * 30) + (minutes / 2)}deg)`
 }
 
+let lastCalled = Date.now();
+
 function animate () {
-    setTimeout (setTime, 1000)
+    const now = Date.now();
+
+    if (now - lastCalled >= 1e3) {
+        lastCalled = now;
+        requestAnimationFrame(setTime);
+    }
 
     requestAnimationFrame(animate)
 }
